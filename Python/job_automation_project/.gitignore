@@ -1,0 +1,48 @@
+# ============================================================
+# LinkedIn Job Automation Pipeline — Git Ignore
+# ============================================================
+
+# --- Environment & Secrets ---
+.env
+storage_state.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# --- Database ---
+*.db
+*.sqlite3
+
+# --- Node / React ---
+node_modules/
+frontend/dist/
+frontend/build/
+.vite/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
+
+# --- Playwright ---
+playwright-report/
+test-results/

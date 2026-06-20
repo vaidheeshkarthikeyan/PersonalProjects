@@ -1,0 +1,38 @@
+{
+    "full_name": "Your Full Name",
+    "email": "your.email@example.com",
+    "phone": "+1234567890",
+    "location": "San Francisco, CA",
+    "linkedin_url": "https://www.linkedin.com/in/yourprofile",
+    "portfolio_url": "https://github.com/yourprofile",
+
+    "years_experience": "5",
+    "education": "Master's Degree in Computer Science",
+    "work_authorization": "Yes, I am authorized to work in the United States",
+    "requires_sponsorship": "No",
+    "willing_to_relocate": "Yes",
+
+    "start_date": "Immediately / 2 weeks notice",
+    "salary_expectation": "150000",
+
+    "skill_proficiency": "Expert",
+
+    "demographic_response": "Prefer not to disclose",
+
+    "cover_letter_short": "I am a passionate AI/ML engineer with 5 years of experience building production-grade machine learning systems. I specialize in transformer architectures, NLP, and scalable ML pipelines. I am excited about the opportunity to contribute to your team and drive impactful AI solutions.",
+
+    "skills": [
+        "Python",
+        "PyTorch",
+        "TensorFlow",
+        "Scikit-learn",
+        "LangChain",
+        "Hugging Face Transformers",
+        "SQL",
+        "Docker",
+        "Kubernetes",
+        "AWS SageMaker",
+        "MLflow",
+        "Apache Spark"
+    ]
+}

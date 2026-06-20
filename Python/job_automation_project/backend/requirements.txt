@@ -1,0 +1,30 @@
+# ============================================================
+# LinkedIn Job Automation Pipeline — Python Dependencies
+# ============================================================
+
+# --- Web Framework ---
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# --- Database ---
+sqlalchemy>=2.0.0
+
+# --- Serialization ---
+marshmallow>=3.20.0
+marshmallow-sqlalchemy>=1.0.0
+
+# --- Configuration ---
+python-dotenv>=1.0.0
+
+# --- Browser Automation ---
+playwright>=1.40.0
+
+# --- LLM Integration (optional fallback) ---
+openai>=1.0.0
+
+# --- Production WSGI Server ---
+gunicorn>=21.2.0
+
+# --- Testing ---
+pytest>=7.4.0
+pytest-flask>=1.3.0
