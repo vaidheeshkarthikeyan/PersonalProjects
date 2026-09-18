@@ -1,0 +1,17 @@
+numpy 
+nltk 
+pandas 
+matplotlib 
+spacy 
+textblob 
+vaderSentiment 
+transformers 
+scikit-learn 
+gensim 
+seaborn 
+torch 
+ipywidgets 
+chardet 
+ipykernel 
+jupyterlab 
+notebook
