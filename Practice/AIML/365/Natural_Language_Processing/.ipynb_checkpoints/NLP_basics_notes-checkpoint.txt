@@ -73,3 +73,152 @@ ipywidgets (8.1.5) – Provides interactive controls (like sliders, dropdowns, a
 
 NumPy <(2.0.0) – The foundational library for numerical computing in Python. It introduces the powerful ndarray object, which lets you store and process large arrays and matrices of numbers efficiently. NumPy is behind almost every data science or machine learning library — it provides the fast, vectorized math operations that make Python suitable for heavy computations. You’ll use it for tasks like matrix operations, statistical calculations, and data transformations that feed into models or visualizations.
 
+
+When preparing text for analysis or machine learning, we often perform several cleaning and transformation steps to make the text more uniform and easier to work with. Each step addresses a specific issue in raw text — from removing stopwords and punctuation to turning words into tokens and root forms.
+
+1. Removing Stopwords.
+ data['review_no_stopwords'] = data['review_lowercase'].apply(lambda x: ' '.join([word for word \
+                                in x.split() if word \
+                                not in (en_stopwords)]))
+At first, it might look intimidating — but this codeblock is simply doing several small, logical steps one after another. It’s written in one line to be compact, but let’s break it down and explain why each part is there and what it does.
+
+(Note: In Python, a backslash at the end of a line means: “This line of code continues on the next line.” If your line of code is too long, or you want to break it for readability, you can put a \ at the end — and Python will treat the next line as if it’s part of the same command.)
+
+Step 1. Creating a new column
+
+data['review_no_stopwords'] = ...
+
+Here, a new column is being created in the DataFrame called data. In the brackets, we specify the name of that new column, in this case - ['review_no_stopwords']
+
+Everything on the right-hand side will be the result stored in this column. This lets us keep the processed version of the text without overwriting the original one.
+
+Step 2. Selecting the column to transform
+
+data['review_lowercase']
+
+This refers to the existing column that contains the lowercased text we want to process. We start from this column and apply a transformation to each of its entries. As we store the result in a new column data['review_no_stopwords']we make sure we don't modify the content inside ['review_lowercase'].
+
+Step 3. Applying a function to each value
+
+.apply(lambda x: ...)
+
+The "apply" function in pandas runs a given function on every element in a column. Here, that means it processes each text entry one by one.
+
+The "lambda x:" part defines an anonymous function — a short, inline function that doesn’t need a name after it has been used once.
+Each x represents a single text value from the column. Here, we name it x because it keeps the code compact but you can replace it with any valid variable name — for example text, review, or even row — and the code will work exactly the same way. x is just a variable name for each value that "apply" sends into the "lambda".
+
+Using a lambda function allows us to describe the transformation directly inside "apply", without defining a separate function elsewhere.
+
+Step 4. Inside the lambda function
+
+This part defines what exactly we want to do to each text entry:
+
+' '.join([word for word in x.split() if word not in (en_stopwords)])
+
+Let’s go through it from the inside out.
+
+1. Splitting the text
+
+x.split()
+
+This turns the text string into a list of individual words. We do this because we can’t check or remove stopwords while the text is one long string — we need to work with separate words. Splitting lets us inspect and filter words individually.
+
+2. The list comprehension
+
+[word for word in x.split() if word not in (en_stopwords)]
+
+This is the heart of the operation.
+
+It builds a new list of words, but only keeps those that are not in the en_stopwords list.
+
+Let’s analyze the structure piece by piece:
+
+word for word in x.split()
+This means: go through each word from the list created by x.split(). It’s a loop written in a compact form.
+
+Here, "word" is the loop variable — the name given to each individual element in x.split() as the loop goes through them one by one. But any other name would work equally well.
+
+The only rule: it must be the same name everywhere inside that comprehension — before and after the for.
+
+if word not in (en_stopwords)
+This is a filtering condition. It checks every word and only keeps it if it’s not found in the collection of stopwords.
+This condition is evaluated for each word one by one.
+
+A list comprehension is just a shortened version of a regular for loop.
+
+If we wrote it in full, it would look like this:
+
+new_list = []
+for word in x.split():
+    if word not in en_stopwords:
+        new_list.append(word)
+So, it reads naturally like this in plain English:
+
+“Create a new list of word
+for every word in x.split()
+if that word is not in en_stopwords.”
+
+The list comprehension is essentially performing two actions at once:
+
+Looping through every word in the text.
+
+Selecting only those that meet the condition (not being a stopword).
+
+The reason we use a list comprehension here is efficiency — it’s faster and more concise than using a traditional for loop with append().
+It keeps the logic for looping and filtering in a single readable structure.
+
+3. Joining the filtered words back
+
+' '.join([...])
+
+After filtering, we have a list of the remaining words.
+But the column expects text, not a list.
+So we join the words back together into one string, with spaces between them.
+
+We use ' '.join() because:
+
+The ' ' before "join" defines what goes between the words — in this case, a single space.
+
+"join" is called on that space string, and the list of words is passed in as an argument.
+
+The result is a single text string, rebuilt from the filtered words.
+
+Step 5. Why this works in one line
+
+Each method and function in this line passes its result directly into the next one.
+Here’s the logical chain:
+
+Select the text column.
+
+Apply a function to each entry.
+
+Inside that function:
+
+Split the text into words.
+
+Filter out stopwords using a list comprehension.
+
+Join the remaining words back into a string.
+
+Store the final cleaned text in a new column.
+
+Because every step produces a return value that can be immediately used by the next,
+the entire process can be written as a single continuous expression.
+
+In practice, this one-liner is compact but completely logical —
+each part is connected by a clear flow of transformation.
+
+Step 6. Key takeaways
+"apply" lets you process each value in a column individually.
+
+"lambda" creates a short inline function when defining a separate one isn’t necessary.
+
+"split" prepares the text for word-level processing.
+
+The list comprehension both loops and filters efficiently in one step.
+
+"join" puts the filtered words back together into readable text.
+
+The entire line works as a chain of transformations, passing results from one step to the next.
+
+
