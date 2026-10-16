@@ -111,3 +111,59 @@ Transformers use encoder-decoder architecture
 
 **Padding:** Adds special tokens or zeroes to the embeddings of shorter sequences.
 **Truncation:** Removes tokens from the longer sequences.
+
+**Multi-Head Attention Layer:**
+- It allows the model to weigh the importance of different tokens
+- Gives us attention vectors that capture ceontextual information between every token in the text
+
+For each token in the input sequence, create three vectors:
+1. Query Vector
+2. Key vector
+3. Value vector
+
+1. **Query Vector:**
+    Represents the token's own "question" about the other tokens in the sequence
+2. **Key Vectors:**
+    - Hold information about all the other tokens in the sequence
+    - Each key vector corresponds to a different token and contains information
+    - Help determine how much attention should be given to that token
+3. **Value Vectors:**
+    - Associated with each token in the input sequence
+    - "Information Containers"
+
+**Feed Forward Layer:**
+- Models complex, relationships within the input sequence
+- Processes and transforms the information captured during the self-attention mechanism
+
+
+**Masked Multi-Head Attention**
+
+**Multi-Head Attention**
+- Calculates attention scores between the current output token and the encoder
+- Helps the model determine which parts of the input sequence are relevant when generating the next token
+
+**Softmax:** Transforms the output into a probability distribution
+
+# GPT
+## Generative Pre-trained Transformer
+
+### Generative
+- Can generate human like text
+- Can continue the text in a coherent and contextually appropriate manner
+- Very good at tasks like:
+    1. Text completion
+    2. Dialogue generation
+    3. Content creation
+
+### Pre-trained
+- learns from massive amounts of text data
+- Acquires deep understanding of language and grammer and a broad vocabulary.
+
+### Transformer
+Follows the Transformer architecture
+![alt text](image-1.png)
+
+## Development of Chatgpt
+![alt text](image-2.png)
+
+# Packages
